@@ -1,0 +1,9 @@
+<!-- Import the component -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+<!-- Use it like any other HTML element -->
+
+<model-viewer src="../shared/models/scene.gltf" ar ar-modes="webxr scene-viewer quick-look fallback" ar-scale="auto"
+    magic-leap camera-controls alt="A 3D model of an astronaut"
+    skybox-image="../shared-assets/environments/aircraft_workshop_01_1k.hdr"
+    ios-src="../shared/models/forklift_truck.usdz"></model-viewer>
