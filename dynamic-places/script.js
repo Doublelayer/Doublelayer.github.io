@@ -38,31 +38,27 @@ window.onload = () => {
     return navigator.geolocation.getCurrentPosition(function (position) {
 
         // than use it to load from remote APIs some places nearby
-        loadPlaces(position.coords)
-            .then((places) => {
-                places.forEach((place) => {
-                    const latitude = place.location.lat;
-                    const longitude = place.location.lng;
+        places.forEach((place) => {
+            const latitude = 53.570216;
+            const longitude = 9.829296;
 
-                    // add place name
-                    const placeText = document.createElement('a-link');
-                    placeText.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-                    placeText.setAttribute('title', place.name);
-                    placeText.setAttribute('scale', '15 15 15');
-                    
-                    placeText.addEventListener('loaded', () => {
-                        window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
-                    });
+            // add place name
+            const placeText = document.createElement('a-link');
+            placeText.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
+            placeText.setAttribute('title', place.name);
+            placeText.setAttribute('scale', '15 15 15');
 
-                    scene.appendChild(placeText);
-                });
-            })
-    },
-        (err) => console.error('Error in retrieving position', err),
-        {
-            enableHighAccuracy: true,
-            maximumAge: 0,
-            timeout: 27000,
-        }
-    );
-};
+            placeText.addEventListener('loaded', () => {
+                window.dispatchEvent(new CustomEvent('gps-entity-place-loaded'))
+            });
+
+            scene.appendChild(placeText);
+        },
+            (err) => console.error('Error in retrieving position', err),
+            {
+                enableHighAccuracy: true,
+                maximumAge: 0,
+                timeout: 27000,
+            }
+        );
+    };
